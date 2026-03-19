@@ -3,101 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Sensi Atualizada</title>
+    <title>Sensi Atualizada - Capa Fixa</title>
     <style>
-        /* Estilo Gamer Escuro e Responsivo */
+        /* Estilo para garantir fundo preto total e centralização */
         body {
-            background-color: #0c0f14; /* Preto azulado bem escuro */
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-        }
-
-        /* Container Principal (centraliza no celular) */
-        .container {
-            width: 100%;
-            max-width: 480px; /* Largura ideal para telas de celular */
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Título Principal */
-        h1 {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-top: 10px;
-            margin-bottom: 30px;
-            color: #00ff00; /* Neon Green para destaque */
-            text-transform: uppercase;
-            text-shadow: 0 0 10px #00ff00;
-        }
-
-        /* Estilo da Foto que você mandou */
-        .header-pic {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
-            object-fit: cover; /* Mantém a proporção */
-        }
-
-        /* Seção do Vídeo */
-        .video-container {
-            width: 100%;
-            background-color: #1a202c; /* Fundo escuro para o player */
-            border-radius: 12px;
-            padding: 10px;
-            box-sizing: border-box;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); /* Efeito neon sutil */
-            margin-bottom: 25px;
-        }
-
-        video {
-            width: 100%;
-            border-radius: 8px;
-            outline: none;
-        }
-
-        /* Estilo dos Botões de Link (Sensi) */
-        .link-button {
-            width: 90%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            padding: 18px;
-            background-color: transparent;
-            border: 2px solid #00ff00; /* Borda Neon */
-            color: #00ff00; /* Texto Neon */
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-radius: 30px; /* Botão arredondado */
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+            align-items: flex-start; /* Alinha no topo para que a capa não fique muito para baixo */
+            min-height: 100vh;
+            color: white; /* Cor padrão para qualquer texto caso precise */
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Impede qualquer barra de rolagem */
         }
 
-        /* Efeito ao passar o dedo/mouse */
-        .link-button:hover, .link-button:active {
-            background-color: #00ff00;
-            color: #0c0f14;
-            box-shadow: 0 0 25px #00ff00;
-            transform: scale(1.03);
+        /* Container que envolve tudo para centralização */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 480px; /* Largura máxima para celulares */
+            padding-top: 20px; /* Espaço pequeno no topo */
         }
-        
-        /* Ajuste de ícone (opcional se quiser usar) */
-        .link-icon {
-            margin-right: 10px;
-            font-size: 1.3rem;
+
+        /* O elemento que sobrepõe a capa (quadradinho de foto e texto) */
+        .over-layer {
+            display: flex;
+            align-items: center; /* Alinha o quadradinho de foto e o texto verticalmente */
+            background-color: rgba(0, 255, 0, 0.7); /* Verde neon semi-transparente para destaque */
+            border-radius: 5px; /* Bordas arredondadas leves */
+            padding: 8px 12px;
+            margin-bottom: 10px; /* Espaço para a capa abaixo */
+            cursor: pointer; /* Indica que é clicável */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Efeito neon sutil */
+        }
+
+        /* O quadradinho da foto pequena */
+        .header-foto-small {
+            width: 30px; /* Tamanho bem pequeno */
+            height: 30px;
+            object-fit: cover; /* Garante que a foto preencha o quadrado */
+            margin-right: 10px; /* Espaço para o texto */
+            border: 1px solid white; /* Borda branca fina para destacar */
+        }
+
+        /* O texto "SENSI ATUALIZADA" */
+        .sensi-text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: black; /* Texto preto para contrastar com o fundo verde */
+            text-transform: uppercase;
+        }
+
+        /* A capa principal (árvore) - Totalmente fixa e não clicável */
+        .capa-fixa {
+            width: 100%; /* Preenche a largura do container */
+            max-width: 400px; /* Tamanho da imagem que você mandou */
+            height: auto; /* Mantém a proporção */
+            border-radius: 12px; /* Cantos arredondados como na imagem original */
+            pointer-events: none; /* TORNA A IMAGEM NÃO CLICÁVEL E SEM PLAYER */
         }
 
     </style>
@@ -105,20 +72,14 @@
 <body>
 
     <div class="container">
-        
-        <img src="FOTO.jpg" alt="Capa da Bio" class="header-pic">
 
-        <h1>Minha sensi atualizada</h1>
-
-        <div class="video-container">
-            <video controls autoplay loop muted>
-                <source src="OVIDEO.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
+        <div class="over-layer">
+            <img src="FOTO_PEQUENA.jpg" alt="Foto Pequena" class="header-foto-small">
+            
+            <span class="sensi-text">SENSI ATUALIZADA</span>
         </div>
 
-        <a href="LINK_DO_SEU_YOUTUBE" class="link-button" target="_blank">📺 Canal com a Sensi Completa</a>
-        <a href="LINK_DO_SEU_INSTAGRAM" class="link-button" target="_blank">📸 Me Siga no Insta</a>
+        <img src="CAPA.jpg" alt="Capa Sensi" class="capa-fixa">
 
     </div>
 
