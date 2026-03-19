@@ -3,68 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensi Atualizada - Capa Fixa</title>
+    <title>Minha Sensi Atualizada</title>
     <style>
-        /* Estilo para garantir fundo preto total e centralização */
+        /* Fundo preto total e centralização */
         body {
             background-color: black;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alinha no topo para que a capa não fique muito para baixo */
+            align-items: center; /* Centraliza verticalmente na tela */
             min-height: 100vh;
-            color: white; /* Cor padrão para qualquer texto caso precise */
+            overflow: hidden; /* Impede rolagem da página principal */
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Impede qualquer barra de rolagem */
+            color: white;
         }
 
-        /* Container que envolve tudo para centralização */
+        /* Container principal para o layout */
         .container {
+            position: relative; /* Permite posicionar elementos em cima */
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 480px; /* Largura máxima para celulares */
-            padding-top: 20px; /* Espaço pequeno no topo */
+            max-width: 480px;
         }
 
-        /* O elemento que sobrepõe a capa (quadradinho de foto e texto) */
+        /* O elemento que sobrepõe (botão SENSI ATUALIZADA) */
         .over-layer {
+            position: absolute; /* Posiciona flutuando */
+            top: -10px; /* Sobe um pouco para ficar em cima da capa */
             display: flex;
-            align-items: center; /* Alinha o quadradinho de foto e o texto verticalmente */
-            background-color: rgba(0, 255, 0, 0.7); /* Verde neon semi-transparente para destaque */
-            border-radius: 5px; /* Bordas arredondadas leves */
+            align-items: center;
+            background-color: rgba(0, 255, 0, 0.9); /* Verde neon quase opaco */
+            border-radius: 5px;
             padding: 8px 12px;
-            margin-bottom: 10px; /* Espaço para a capa abaixo */
-            cursor: pointer; /* Indica que é clicável */
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Efeito neon sutil */
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+            z-index: 10; /* Garante que fique acima de tudo */
         }
 
-        /* O quadradinho da foto pequena */
         .header-foto-small {
-            width: 30px; /* Tamanho bem pequeno */
+            width: 30px;
             height: 30px;
-            object-fit: cover; /* Garante que a foto preencha o quadrado */
-            margin-right: 10px; /* Espaço para o texto */
-            border: 1px solid white; /* Borda branca fina para destacar */
+            object-fit: cover;
+            margin-right: 10px;
+            border: 1px solid white;
         }
 
-        /* O texto "SENSI ATUALIZADA" */
         .sensi-text {
             font-size: 1.1rem;
             font-weight: bold;
-            color: black; /* Texto preto para contrastar com o fundo verde */
+            color: black;
             text-transform: uppercase;
         }
 
-        /* A capa principal (árvore) - Totalmente fixa e não clicável */
+        /* A capa principal (árvore) - Certifique-se de que o nome no src está CORRETO */
         .capa-fixa {
-            width: 100%; /* Preenche a largura do container */
-            max-width: 400px; /* Tamanho da imagem que você mandou */
-            height: auto; /* Mantém a proporção */
-            border-radius: 12px; /* Cantos arredondados como na imagem original */
-            pointer-events: none; /* TORNA A IMAGEM NÃO CLICÁVEL E SEM PLAYER */
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            pointer-events: none; /* Imagem não clicável */
+            margin-top: 50px; /* Dá espaço para o botão de sensi */
+        }
+
+        /* O Modal (janela de Sensi) - Começa invisível */
+        .sensi-modal {
+            display: none; /* Escondido por padrão */
+            position: fixed; /* Fica fixo na tela */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* Fundo preto quase opaco */
+            z-index: 100; /* Acima de tudo */
+            justify-content: center;
+            align-items: center;
+            color: #00ff00; /* Texto Verde Neon */
+            font-family: 'Courier New', Courier, monospace; /* Fonte tipo código/matrix */
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .sensi-content {
+            text-align: left;
+            border: 2px solid #00ff00;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px #00ff00;
+        }
+
+        /* Botão para fechar o modal */
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #00ff00;
+            cursor: pointer;
         }
 
     </style>
@@ -73,15 +111,43 @@
 
     <div class="container">
 
-        <div class="over-layer">
+        <div class="over-layer" onclick="mostrarSensi()">
             <img src="FOTO_PEQUENA.jpg" alt="Foto Pequena" class="header-foto-small">
-            
             <span class="sensi-text">SENSI ATUALIZADA</span>
         </div>
 
         <img src="CAPA.jpg" alt="Capa Sensi" class="capa-fixa">
 
     </div>
+
+    <div id="sensiModal" class="sensi-modal">
+        <span class="close-modal" onclick="fecharSensi()">&times;</span>
+        <div class="sensi-content">
+            GERAL: 189<br>
+            2X: 190<br>
+            4X: 199<br>
+            READSHOT: 99<br>
+            AWM: 55
+        </div>
+    </div>
+
+    <script>
+        function mostrarSensi() {
+            document.getElementById('sensiModal').style.display = 'flex';
+        }
+
+        function fecharSensi() {
+            document.getElementById('sensiModal').style.display = 'none';
+        }
+
+        // Fecha o modal ao clicar fora do conteúdo
+        window.onclick = function(event) {
+            var modal = document.getElementById('sensiModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
