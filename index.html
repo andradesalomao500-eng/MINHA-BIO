@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Sensi Atualizada</title>
+    <style>
+        /* Estilo Gamer Escuro e Responsivo */
+        body {
+            background-color: #0c0f14; /* Preto azulado bem escuro */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        /* Container Principal (centraliza no celular) */
+        .container {
+            width: 100%;
+            max-width: 480px; /* Largura ideal para telas de celular */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Título Principal */
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            color: #00ff00; /* Neon Green para destaque */
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Estilo da Foto que você mandou */
+        .header-pic {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            object-fit: cover; /* Mantém a proporção */
+        }
+
+        /* Seção do Vídeo */
+        .video-container {
+            width: 100%;
+            background-color: #1a202c; /* Fundo escuro para o player */
+            border-radius: 12px;
+            padding: 10px;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); /* Efeito neon sutil */
+            margin-bottom: 25px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Estilo dos Botões de Link (Sensi) */
+        .link-button {
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            padding: 18px;
+            background-color: transparent;
+            border: 2px solid #00ff00; /* Borda Neon */
+            color: #00ff00; /* Texto Neon */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 30px; /* Botão arredondado */
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Efeito ao passar o dedo/mouse */
+        .link-button:hover, .link-button:active {
+            background-color: #00ff00;
+            color: #0c0f14;
+            box-shadow: 0 0 25px #00ff00;
+            transform: scale(1.03);
+        }
+        
+        /* Ajuste de ícone (opcional se quiser usar) */
+        .link-icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <img src="FOTO.jpg" alt="Capa da Bio" class="header-pic">
+
+        <h1>Minha sensi atualizada</h1>
+
+        <div class="video-container">
+            <video controls autoplay loop muted>
+                <source src="OVIDEO.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+
+        <a href="LINK_DO_SEU_YOUTUBE" class="link-button" target="_blank">📺 Canal com a Sensi Completa</a>
+        <a href="LINK_DO_SEU_INSTAGRAM" class="link-button" target="_blank">📸 Me Siga no Insta</a>
+
+    </div>
+
+</body>
+</html>
